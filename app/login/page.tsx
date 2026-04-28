@@ -52,9 +52,17 @@ export default function LoginPage() {
             } else if (loginMode === "otp_request") {
                 const { error: sbError } = await supabase.auth.signInWithOtp({
                     phone: `+91${phoneNumber}`,
+                    options: {
+                        shouldCreateUser: false,
+                    }
                 });
 
-                if (sbError) throw sbError;
+                if (sbError) {
+                    if (sbError.message.includes("Signups not allowed for otp")) {
+                        throw new Error("No account found for this phone number. Please sign up.");
+                    }
+                    throw sbError;
+                }
                 setLoginMode("otp_verify");
             } else if (loginMode === "otp_verify") {
                 const { data, error: sbError } = await supabase.auth.verifyOtp({
