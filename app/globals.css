@@ -1,26 +1,191 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* --- BRAND COLORS --- */
+  --color-brand-primary: #F5620F;
+  --color-brand-secondary: #F5880F;
+  --color-brand-accent: #FFBC00;
+  --color-brand-light: #FFF0E6;
+
+  /* --- FINANCIAL COLORS --- */
+  --color-financial-success: #10B981;
+  --color-financial-success-bg: #D1FAE5;
+  --color-financial-danger: #EF4444;
+  --color-financial-danger-bg: #FEE2E2;
+
+  /* --- SURFACE COLORS --- */
+  --color-surface-main: #FDFEFE;
+  --color-surface-card: #FFFFFF;
+
+  /* --- TEXT COLORS --- */
+  --color-text-main: #0F172A;
+  --color-text-muted: #64748B;
+  --color-text-placeholder: #94A3B8;
+
+  /* --- FONTS --- */
+  --font-jakarta: var(--font-plus-jakarta), sans-serif;
+
+  /* --- GRADIENTS --- */
+  --background-image-brand-gradient: linear-gradient(135deg, #F5620F, #F5880F, #FFBC00);
+
+  /* --- SHADOWS --- */
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-floating: 0 20px 25px -5px rgba(245, 98, 15, 0.1), 0 8px 10px -6px rgba(245, 98, 15, 0.1);
+
+  /* --- BORDER RADIUS --- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+@layer utilities {
+  .bento-card {
+    @apply bg-white border border-gray-100 shadow-sm transition-all duration-300;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    &:hover {
+      @apply border-brand-primary/20 shadow-md transform -translate-y-0.5;
+    }
+  }
+
+  .mesh-bg {
+    background-color: #fafafa;
+    background-image:
+      radial-gradient(at 100% 0%, rgba(245, 98, 15, 0.03) 0px, transparent 50%),
+      radial-gradient(at 0% 100%, rgba(255, 188, 0, 0.03) 0px, transparent 50%);
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-brand-gradient;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-brand-gradient;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* --- SKELETON LOADERS --- */
+.skeleton {
+  background-color: #f1f5f9;
+  position: relative;
+  overflow: hidden;
+  min-height: 1rem;
+  border-radius: var(--radius-md);
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transform: translateX(-100%);
+  background-image: linear-gradient(90deg,
+      rgba(255, 255, 255, 0) 0,
+      rgba(255, 255, 255, 0.4) 30%,
+      rgba(255, 255, 255, 0.7) 60%,
+      rgba(255, 255, 255, 0));
+  animation: shimmer 2.5s infinite linear;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Calendar Custom Styles */
+.react-calendar {
+  width: 100% !important;
+  border: none !important;
+  background: transparent !important;
+  font-family: inherit !important;
+}
+
+.react-calendar__navigation {
+  display: flex;
+  margin-bottom: 2rem;
+  background: var(--surface-main);
+  padding: 0.5rem;
+  border-radius: 1.5rem;
+}
+
+.react-calendar__navigation button {
+  min-width: 44px;
+  background: none;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--text-main);
+  border-radius: 12px;
+  transition: all 0.2s;
+  padding: 0.75rem;
+}
+
+.react-calendar__navigation button:hover:enabled,
+.react-calendar__navigation button:focus:enabled {
+  background-color: white !important;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.react-calendar__month-view__weekdays {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  padding-bottom: 1.5rem;
+}
+
+.react-calendar__month-view__weekdays__weekday abbr {
+  text-decoration: none;
+}
+
+.react-calendar__tile {
+  padding: 1rem 0.5rem !important;
+  background: none;
+  text-align: center;
+  border-radius: 1rem;
+  transition: all 0.2s;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 2px !important;
+  height: 80px !important;
+  color: var(--text-main) !important;
+}
+
+.react-calendar__tile abbr {
+  font-size: 1rem;
+  font-weight: 800;
+  z-index: 2;
+  text-decoration: none !important;
+}
+
+.react-calendar__tile--active,
+.react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: var(--brand-gradient) !important;
+  color: white !important;
+  border-radius: 1.5rem !important;
+  box-shadow: 0 10px 15px -3px rgba(245, 98, 15, 0.2);
+}
+
+.react-calendar__tile--active abbr {
+  color: #000000 !important;
+}
+
+.react-calendar__tile--now:not(.react-calendar__tile--active) {
+  background: var(--brand-light) !important;
+  color: var(--brand-primary) !important;
+  border-radius: 1.5rem !important;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth {
+  color: var(--text-placeholder) !important;
+  opacity: 0.2;
 }
