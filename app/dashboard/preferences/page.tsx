@@ -16,6 +16,7 @@ import {
   Monitor
 } from "lucide-react";
 import { toast } from "react-hot-toast";
+import { useTheme } from "next-themes";
 
 export default function PreferencesPage() {
   const [loading, setLoading] = useState(true);
@@ -31,6 +32,8 @@ export default function PreferencesPage() {
     }
   });
 
+  const { setTheme } = useTheme();
+
   useEffect(() => {
     fetchPreferences();
   }, []);
@@ -42,6 +45,9 @@ export default function PreferencesPage() {
 
       if (user?.user_metadata?.preferences) {
         setPreferences(user.user_metadata.preferences);
+        if (user.user_metadata.preferences.theme) {
+          setTheme(user.user_metadata.preferences.theme);
+        }
       }
     } catch (error: any) {
       toast.error(error.message || "Failed to fetch preferences");
@@ -80,6 +86,9 @@ export default function PreferencesPage() {
   const setPreference = (key: string, value: any) => {
     const updated = { ...preferences, [key]: value };
     setPreferences(updated);
+    if (key === "theme") {
+      setTheme(value);
+    }
     handleSave(updated);
   };
 
@@ -110,9 +119,9 @@ export default function PreferencesPage() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         
         {/* Appearance Section */}
-        <div className="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm space-y-8">
+        <div className="bg-surface-card rounded-[2.5rem] p-8 border border-border-main shadow-sm space-y-8">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-blue-500">
+            <div className="w-12 h-12 bg-blue-50 dark:bg-blue-900/20 rounded-2xl flex items-center justify-center text-blue-500">
               <Monitor className="w-6 h-6" />
             </div>
             <div>
@@ -133,7 +142,7 @@ export default function PreferencesPage() {
                 className={`flex flex-col items-center gap-3 p-4 rounded-2xl border-2 transition-all ${
                   preferences.theme === theme.id 
                   ? "border-brand-primary bg-brand-light/20 text-brand-primary" 
-                  : "border-gray-50 hover:border-gray-100 bg-gray-50/50"
+                  : "border-border-main hover:border-brand-primary/20 bg-surface-main/50"
                 }`}
               >
                 <theme.icon className="w-5 h-5" />
@@ -144,9 +153,9 @@ export default function PreferencesPage() {
         </div>
 
         {/* Currency Section */}
-        <div className="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm space-y-8">
+        <div className="bg-surface-card rounded-[2.5rem] p-8 border border-border-main shadow-sm space-y-8">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center text-green-600">
+            <div className="w-12 h-12 bg-green-50 dark:bg-green-900/20 rounded-2xl flex items-center justify-center text-green-600">
               <IndianRupee className="w-6 h-6" />
             </div>
             <div>
@@ -169,7 +178,7 @@ export default function PreferencesPage() {
                     className={`flex-1 flex items-center justify-center gap-2 h-14 rounded-2xl border-2 transition-all font-bold ${
                       preferences.currency === cur.id 
                       ? "border-brand-primary bg-brand-light/20 text-brand-primary" 
-                      : "border-gray-50 hover:border-gray-100 bg-gray-50/50 text-text-muted"
+                      : "border-border-main hover:border-brand-primary/20 bg-surface-main/50 text-text-muted"
                     }`}
                   >
                     <span className="text-xl">{cur.symbol}</span>
@@ -186,7 +195,7 @@ export default function PreferencesPage() {
                 <select 
                   value={preferences.language}
                   onChange={(e) => setPreference("language", e.target.value)}
-                  className="w-full h-14 pl-12 pr-4 bg-gray-50 border-2 border-transparent rounded-2xl outline-none focus:border-brand-primary/20 focus:bg-white transition-all font-bold text-text-main appearance-none cursor-pointer"
+                  className="w-full h-14 pl-12 pr-4 bg-surface-main/50 border-2 border-transparent rounded-2xl outline-none focus:border-brand-primary/20 focus:bg-surface-card transition-all font-bold text-text-main appearance-none cursor-pointer"
                 >
                   <option value="English">English (Default)</option>
                   <option value="Hindi">Hindi (Beta)</option>
@@ -198,9 +207,9 @@ export default function PreferencesPage() {
         </div>
 
         {/* Notifications Section */}
-        <div className="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm space-y-8 lg:col-span-2">
+        <div className="bg-surface-card rounded-[2.5rem] p-8 border border-border-main shadow-sm space-y-8 lg:col-span-2">
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-500">
+            <div className="w-12 h-12 bg-purple-50 dark:bg-purple-900/20 rounded-2xl flex items-center justify-center text-purple-500">
               <Bell className="w-6 h-6" />
             </div>
             <div>
@@ -217,10 +226,10 @@ export default function PreferencesPage() {
             ].map((item) => (
               <div 
                 key={item.id}
-                className="p-6 bg-gray-50/50 rounded-3xl border border-gray-100 flex flex-col justify-between gap-6"
+                className="p-6 bg-surface-main/50 rounded-3xl border border-border-main flex flex-col justify-between gap-6"
               >
                 <div className="space-y-4">
-                  <div className="w-10 h-10 bg-white rounded-xl shadow-sm flex items-center justify-center text-text-muted">
+                  <div className="w-10 h-10 bg-surface-card rounded-xl shadow-sm flex items-center justify-center text-text-muted">
                     <item.icon className="w-5 h-5" />
                   </div>
                   <div>
@@ -233,8 +242,8 @@ export default function PreferencesPage() {
                   onClick={() => toggleNotification(item.id as any)}
                   className={`w-full h-12 rounded-xl flex items-center justify-center gap-2 transition-all font-bold text-xs ${
                     preferences.notifications[item.id as keyof typeof preferences.notifications]
-                    ? "bg-text-main text-white"
-                    : "bg-white text-text-muted border border-gray-200"
+                    ? "bg-text-main text-surface-card"
+                    : "bg-surface-card text-text-muted border border-border-main"
                   }`}
                 >
                   {preferences.notifications[item.id as keyof typeof preferences.notifications] ? (
@@ -253,7 +262,7 @@ export default function PreferencesPage() {
       {/* Persistence Note */}
       <div className="bg-brand-light/30 border border-brand-primary/10 rounded-[2.5rem] p-8 flex flex-col md:flex-row items-center gap-6 justify-between">
         <div className="flex gap-4 items-center">
-          <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm text-brand-primary grow-0 shrink-0">
+          <div className="w-12 h-12 bg-surface-card rounded-2xl flex items-center justify-center shadow-sm text-brand-primary grow-0 shrink-0">
              <Settings className="w-6 h-6" />
           </div>
           <div>
@@ -262,7 +271,7 @@ export default function PreferencesPage() {
           </div>
         </div>
         {saving && (
-           <div className="flex items-center gap-2 text-brand-primary px-4 py-2 bg-white rounded-full shadow-sm animate-pulse">
+           <div className="flex items-center gap-2 text-brand-primary px-4 py-2 bg-surface-card rounded-full shadow-sm animate-pulse">
               <div className="w-2 h-2 bg-brand-primary rounded-full animate-bounce"></div>
               <span className="text-xs font-bold">Syncing choices...</span>
            </div>

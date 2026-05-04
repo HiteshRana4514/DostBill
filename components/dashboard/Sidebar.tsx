@@ -48,13 +48,13 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
 
       {/* Structured Sidebar */}
       <aside className={`
-        fixed top-0 left-0 bottom-0 w-72 bg-white border-r border-gray-100 z-50 transition-all duration-300
+        fixed top-0 left-0 bottom-0 w-72 bg-surface-card border-r border-border-main z-50 transition-all duration-300
         ${isOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"}
       `}>
         <div className="flex flex-col h-full">
           
           {/* Logo Section */}
-          <div className="h-20 flex items-center px-8 border-b border-gray-50 mb-4">
+          <div className="h-20 flex items-center px-8 border-b border-border-main mb-4">
             <Link href="/dashboard" className="flex items-center group">
               <img src="/logo.png" alt="DostBill" className="h-10 w-auto object-contain group-hover:scale-105 transition-transform" />
             </Link>
@@ -78,8 +78,8 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                       className={`
                         flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all group
                         ${isActive 
-                          ? "bg-brand-light text-brand-primary" 
-                          : "text-text-muted hover:text-text-main hover:bg-gray-50"}
+                          ? "bg-brand-light/30 text-brand-primary" 
+                          : "text-text-muted hover:text-text-main hover:bg-surface-main/50"}
                       `}
                     >
                       <Icon className={`w-5 h-5 transition-colors ${isActive ? "text-brand-primary" : "group-hover:text-text-main"}`} />
@@ -91,7 +91,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             </div>
 
             {/* Business Section */}
-            <div className="mb-8 pt-6 border-t border-gray-50">
+            <div className="mb-8 pt-6 border-t border-border-main">
               <p className="px-4 text-[10px] font-bold text-text-muted uppercase tracking-[0.15em] mb-4">Business</p>
               <nav className="space-y-1">
                 {[
@@ -109,8 +109,8 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                       className={`
                         flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all group
                         ${isActive 
-                          ? "bg-brand-light text-brand-primary" 
-                          : "text-text-muted hover:text-text-main hover:bg-gray-50"}
+                          ? "bg-brand-light/30 text-brand-primary" 
+                          : "text-text-muted hover:text-text-main hover:bg-surface-main/50"}
                       `}
                     >
                       <Icon className={`w-5 h-5 transition-colors ${isActive ? "text-brand-primary" : "group-hover:text-text-main"}`} />
@@ -122,7 +122,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             </div>
 
             {/* Personal Section */}
-            <div className="mb-4 pt-6 border-t border-gray-50">
+            <div className="mb-4 pt-6 border-t border-border-main">
               <p className="px-4 text-[10px] font-bold text-text-muted uppercase tracking-[0.15em] mb-4">Personal</p>
               <nav className="space-y-1">
                 {[
@@ -141,8 +141,8 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                       className={`
                         flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all group
                         ${isActive 
-                          ? "bg-brand-light text-brand-primary" 
-                          : "text-text-muted hover:text-text-main hover:bg-gray-50"}
+                          ? "bg-brand-light/30 text-brand-primary" 
+                          : "text-text-muted hover:text-text-main hover:bg-surface-main/50"}
                       `}
                     >
                       <Icon className={`w-5 h-5 transition-colors ${isActive ? "text-brand-primary" : "group-hover:text-text-main"}`} />
@@ -156,8 +156,8 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
           </div>
 
           {/* Minimalist Footer inside Sidebar */}
-          <div className="p-6 border-t border-gray-50">
-             <div className="bg-brand-primary/5 rounded-2xl p-4 border border-brand-primary/10">
+          <div className="p-6 border-t border-border-main">
+             <div className="bg-brand-primary/5 dark:bg-brand-primary/10 rounded-2xl p-4 border border-brand-primary/10">
                 <div className="flex items-center gap-3 mb-2">
                    <ShieldCheck className="w-4 h-4 text-brand-primary" />
                    <span className="text-[10px] font-bold text-brand-primary uppercase tracking-widest">Secured by Dost</span>

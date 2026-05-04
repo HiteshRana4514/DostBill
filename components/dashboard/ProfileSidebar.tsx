@@ -64,17 +64,17 @@ export default function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps)
 
       {/* Right Sidebar */}
       <aside className={`
-        fixed top-0 right-0 bottom-0 w-80 lg:w-96 bg-white shadow-2xl z-[70] transition-transform duration-500 ease-in-out
+        fixed top-0 right-0 bottom-0 w-80 lg:w-96 bg-surface-card shadow-2xl z-[70] transition-transform duration-500 ease-in-out
         ${isOpen ? "translate-x-0" : "translate-x-full"}
       `}>
         <div className="flex flex-col h-full">
           
           {/* Header */}
-          <div className="h-20 flex items-center justify-between px-8 border-b border-gray-50">
+          <div className="h-20 flex items-center justify-between px-8 border-b border-border-main">
             <h2 className="text-xl font-black text-text-main">Profile</h2>
             <button 
               onClick={onClose}
-              className="p-2 hover:bg-gray-100 rounded-xl transition-colors"
+              className="p-2 hover:bg-surface-main rounded-xl transition-colors"
             >
               <X className="w-5 h-5 text-text-muted" />
             </button>
@@ -85,10 +85,10 @@ export default function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps)
             {/* User Info Card */}
             <div className="text-center space-y-4">
                <div className="inline-flex relative">
-                  <div className="w-24 h-24 bg-brand-light rounded-[2rem] flex items-center justify-center text-5xl shadow-inner border border-brand-primary/10">
+                  <div className="w-24 h-24 bg-brand-light/30 rounded-[2rem] flex items-center justify-center text-5xl shadow-inner border border-brand-primary/10">
                     {userProfile.avatar}
                   </div>
-                  <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-financial-success rounded-xl flex items-center justify-center border-4 border-white text-white">
+                  <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-financial-success rounded-xl flex items-center justify-center border-4 border-surface-card text-white">
                       <ShieldCheck className="w-4 h-4" />
                   </div>
                </div>
@@ -99,8 +99,8 @@ export default function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps)
             </div>
 
             {/* Premium Section */}
-            <div className="bg-text-main rounded-3xl p-6 text-white relative overflow-hidden group cursor-pointer">
-              <div className="absolute top-0 right-0 p-4 opacity-20">
+            <div className="bg-slate-950 dark:bg-brand-primary/10 rounded-3xl p-6 text-white relative overflow-hidden group cursor-pointer border border-white/5 dark:border-brand-primary/20 shadow-2xl">
+              <div className="absolute top-0 right-0 p-4 opacity-20 group-hover:scale-110 transition-transform duration-500">
                 <Crown className="w-12 h-12 text-brand-accent fill-brand-accent" />
               </div>
               <div className="relative z-10">
@@ -109,7 +109,7 @@ export default function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps)
                 <p className="text-xs text-white/60 mt-1 leading-relaxed">Unlock advanced insights and unlimited groups.</p>
                 <button 
                   onClick={() => { router.push("/dashboard/premium"); onClose(); }}
-                  className="mt-4 w-full h-10 bg-brand-gradient text-white text-xs font-bold rounded-xl shadow-lg hover:opacity-90 transition-opacity"
+                  className="mt-4 w-full h-10 bg-brand-gradient text-white text-xs font-bold rounded-xl shadow-lg hover:shadow-brand-primary/20 hover:opacity-90 transition-all active:scale-[0.98]"
                 >
                   Upgrade Now
                 </button>
@@ -129,15 +129,15 @@ export default function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps)
                       <button 
                         key={item.label} 
                         onClick={item.onClick}
-                        className="w-full flex items-center justify-between p-3 hover:bg-gray-50 rounded-2xl transition-all group"
+                        className="w-full flex items-center justify-between p-3 hover:bg-surface-main rounded-2xl transition-all group"
                       >
                         <div className="flex items-center gap-3">
-                          <div className={`p-2 bg-gray-50 rounded-lg group-hover:bg-white group-hover:shadow-sm transition-all`}>
+                          <div className={`p-2 bg-surface-main rounded-lg group-hover:bg-surface-card group-hover:shadow-sm transition-all`}>
                             <item.icon className={`w-4 h-4 ${item.color}`} />
                           </div>
                           <span className="text-sm font-bold text-text-main">{item.label}</span>
                         </div>
-                        <ChevronRight className="w-4 h-4 text-gray-200 group-hover:text-text-muted transition-colors" />
+                        <ChevronRight className="w-4 h-4 text-text-placeholder group-hover:text-text-muted transition-colors" />
                       </button>
                     ))}
                   </div>
@@ -148,9 +148,9 @@ export default function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps)
                   <div className="space-y-1">
                     <button 
                       onClick={() => { router.push("/dashboard/help"); onClose(); }}
-                      className="w-full flex items-center gap-3 p-3 hover:bg-gray-50 rounded-2xl transition-all group"
+                      className="w-full flex items-center gap-3 p-3 hover:bg-surface-main rounded-2xl transition-all group"
                     >
-                       <div className="p-2 bg-gray-50 rounded-lg group-hover:bg-white group-hover:shadow-sm">
+                       <div className="p-2 bg-surface-main rounded-lg group-hover:bg-surface-card group-hover:shadow-sm">
                           <HelpCircle className="w-4 h-4 text-brand-primary" />
                        </div>
                        <span className="text-sm font-bold text-text-main">Help & Feedback</span>
@@ -162,10 +162,10 @@ export default function ProfileSidebar({ isOpen, onClose }: ProfileSidebarProps)
           </div>
 
           {/* Footer Actions */}
-          <div className="p-6 border-t border-gray-50">
+          <div className="p-6 border-t border-border-main">
             <button 
               onClick={handleLogout}
-              className="w-full h-14 bg-red-50 text-red-500 font-bold rounded-2xl flex items-center justify-center gap-2 hover:bg-red-100 transition-all border border-red-100/50"
+              className="w-full h-14 bg-red-500/10 text-red-500 font-bold rounded-2xl flex items-center justify-center gap-2 hover:bg-red-500/20 transition-all border border-red-500/10"
             >
               <LogOut className="w-5 h-5" />
               Sign Out Securely

@@ -33,7 +33,7 @@ export default function BusinessOverviewPage() {
           <p className="text-text-muted font-medium">Manage your professional finances and operations.</p>
         </div>
         <div className="flex gap-3">
-           <button className="h-14 px-8 bg-white border border-gray-100 text-text-main font-black rounded-2xl shadow-sm hover:shadow-md transition-all active:scale-95">
+           <button className="h-14 px-8 bg-surface-card border border-border-main text-text-main font-black rounded-2xl shadow-sm hover:shadow-md transition-all active:scale-95">
              Reports
            </button>
            <button className="h-14 px-8 bg-brand-gradient text-white font-black rounded-2xl shadow-lg active:scale-95 transition-all flex items-center gap-2">
@@ -45,22 +45,22 @@ export default function BusinessOverviewPage() {
 
       {/* Stats Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-sm space-y-2 group hover:border-brand-primary/20 transition-all">
+        <div className="bg-surface-card rounded-[2rem] p-8 border border-border-main shadow-sm space-y-2 group hover:border-brand-primary/20 transition-all">
             <p className="text-[10px] font-black uppercase tracking-widest text-text-muted">Total Revenue</p>
             <h3 className="text-3xl font-black text-text-main">₹4.2L</h3>
             <p className="text-xs text-financial-success font-bold flex items-center gap-1">+24% vs last month</p>
         </div>
-        <div className="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-sm space-y-2 hover:border-brand-primary/20 transition-all">
+        <div className="bg-surface-card rounded-[2rem] p-8 border border-border-main shadow-sm space-y-2 hover:border-brand-primary/20 transition-all">
             <p className="text-[10px] font-black uppercase tracking-widest text-text-muted">Active Clients</p>
             <h3 className="text-3xl font-black text-text-main">12</h3>
             <p className="text-xs text-text-muted font-bold">3 new this week</p>
         </div>
-        <div className="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-sm space-y-2 hover:border-brand-primary/20 transition-all">
+        <div className="bg-surface-card rounded-[2rem] p-8 border border-border-main shadow-sm space-y-2 hover:border-brand-primary/20 transition-all">
             <p className="text-[10px] font-black uppercase tracking-widest text-text-muted">Outstanding</p>
             <h3 className="text-3xl font-black text-financial-danger">₹85,000</h3>
             <p className="text-xs text-text-muted font-bold">5 invoices delayed</p>
         </div>
-        <div className="bg-text-main rounded-[2rem] p-8 border border-gray-100 shadow-sm space-y-2 text-white">
+        <div className="bg-text-main rounded-[2rem] p-8 border border-border-main shadow-sm space-y-2 text-surface-card">
             <p className="text-[10px] font-black uppercase tracking-widest text-white/40">Net Margin</p>
             <h3 className="text-3xl font-black">68%</h3>
             <p className="text-xs text-brand-accent font-bold">High Performance</p>
@@ -68,20 +68,20 @@ export default function BusinessOverviewPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-         <div className="lg:col-span-2 bg-white rounded-[2.5rem] border border-gray-100 shadow-sm overflow-hidden p-10 flex flex-col items-center justify-center space-y-6 text-center min-h-[400px]">
-            <div className="w-20 h-20 bg-brand-light rounded-3xl flex items-center justify-center text-4xl">
+         <div className="lg:col-span-2 bg-surface-card rounded-[2.5rem] border border-border-main shadow-sm overflow-hidden p-10 flex flex-col items-center justify-center space-y-6 text-center min-h-[400px]">
+            <div className="w-20 h-20 bg-brand-light/30 rounded-3xl flex items-center justify-center text-4xl">
               📊
             </div>
             <div className="max-w-sm">
                <h3 className="text-2xl font-black text-text-main tracking-tight">Financial Trends</h3>
                <p className="text-text-muted font-medium mt-2">Connect your business bank account to see real-time cash flow analytics.</p>
             </div>
-            <button className="h-14 px-10 bg-brand-light text-brand-primary font-black rounded-2xl hover:bg-brand-primary hover:text-white transition-all active:scale-95">
+            <button className="h-14 px-10 bg-brand-light/30 text-brand-primary font-black rounded-2xl hover:bg-brand-primary hover:text-white transition-all active:scale-95">
                Link Bank Account
             </button>
          </div>
 
-         <div className="bg-white rounded-[2.5rem] border border-gray-100 shadow-sm p-10 space-y-8">
+         <div className="bg-surface-card rounded-[2.5rem] border border-border-main shadow-sm p-10 space-y-8">
             <h4 className="text-xl font-black text-text-main tracking-tight">Recent Activity</h4>
             <div className="space-y-6">
                {[

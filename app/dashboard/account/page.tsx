@@ -78,6 +78,8 @@ export default function AccountPage() {
           avatar_url: profile.avatar,
           upi_id: profile.upiId
         }
+      }, {
+        emailRedirectTo: `${window.location.origin}/auth/confirm`
       });
 
       if (error) throw error;
@@ -159,9 +161,9 @@ export default function AccountPage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Profile Card */}
         <div className="lg:col-span-1 space-y-6">
-          <div className="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm text-center">
+          <div className="bg-surface-card rounded-[2.5rem] p-8 border border-border-main shadow-sm text-center">
             <div className="relative inline-block group mb-6">
-              <div className="w-32 h-32 bg-brand-light rounded-[2.5rem] flex items-center justify-center text-6xl shadow-inner border border-brand-primary/10 transition-transform group-hover:scale-105 duration-300">
+              <div className="w-32 h-32 bg-brand-light/30 rounded-[2.5rem] flex items-center justify-center text-6xl shadow-inner border border-brand-primary/10 transition-transform group-hover:scale-105 duration-300">
                 {profile.avatar}
               </div>
               <div className="absolute -bottom-2 -right-2 w-10 h-10 bg-white rounded-xl shadow-lg flex items-center justify-center border border-gray-100 text-brand-primary">
@@ -172,7 +174,7 @@ export default function AccountPage() {
             <h3 className="text-2xl font-black text-text-main">{profile.fullName}</h3>
             <p className="text-text-muted font-medium text-sm">{profile.email}</p>
 
-            <div className="mt-8 pt-8 border-t border-gray-50">
+            <div className="mt-8 pt-8 border-t border-border-main">
               <p className="text-xs font-black uppercase tracking-widest text-text-muted mb-4">Choose Avatar</p>
               <div className="grid grid-cols-4 gap-2">
                 {AVATARS.map((av) => (
@@ -181,7 +183,7 @@ export default function AccountPage() {
                     onClick={() => setProfile({ ...profile, avatar: av })}
                     className={`aspect-square flex items-center justify-center text-xl rounded-xl transition-all ${profile.avatar === av
                       ? "bg-brand-primary text-white scale-110 shadow-md"
-                      : "bg-gray-50 hover:bg-gray-100"
+                      : "bg-surface-main hover:bg-surface-main/80"
                       }`}
                   >
                     {av}
@@ -191,7 +193,7 @@ export default function AccountPage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm space-y-4">
+          <div className="bg-surface-card rounded-[2.5rem] p-8 border border-border-main shadow-sm space-y-4">
             <p className="text-xs font-black uppercase tracking-widest text-text-muted text-center">Change Password</p>
             <div className="relative group">
               <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-text-placeholder group-focus-within:text-brand-primary transition-colors" />
@@ -200,7 +202,7 @@ export default function AccountPage() {
                 placeholder="Current Password"
                 value={currentPassword}
                 onChange={(e) => setCurrentPassword(e.target.value)}
-                className="w-full h-12 pl-10 pr-12 bg-gray-50 border-2 border-transparent rounded-xl outline-none focus:border-brand-primary/20 focus:bg-white transition-all font-bold text-sm text-text-main"
+                className="w-full h-12 pl-10 pr-12 bg-surface-main border-2 border-transparent rounded-xl outline-none focus:border-brand-primary/20 focus:bg-surface-card transition-all font-bold text-sm text-text-main"
               />
               <button
                 type="button"
@@ -232,7 +234,7 @@ export default function AccountPage() {
             <button
               onClick={handlePasswordReset}
               disabled={resetting}
-              className="w-full h-12 bg-text-main text-white font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-black transition-all shadow-sm active:scale-95 disabled:opacity-50"
+              className="w-full h-12 bg-text-main text-surface-card font-bold rounded-xl flex items-center justify-center gap-2 hover:bg-brand-primary transition-all shadow-sm active:scale-95 disabled:opacity-50"
             >
               {resetting ? <Loader2 className="w-4 h-4 animate-spin" /> : <Lock className="w-4 h-4" />}
               Update Password
@@ -243,7 +245,7 @@ export default function AccountPage() {
 
         {/* Edit Form */}
         <div className="lg:col-span-2">
-          <div className="bg-white rounded-[2.5rem] p-8 lg:p-10 border border-gray-100 shadow-sm h-full">
+          <div className="bg-surface-card rounded-[2.5rem] p-8 lg:p-10 border border-border-main shadow-sm h-full">
             <form onSubmit={handleUpdateProfile} className="space-y-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {/* Full Name */}
@@ -255,7 +257,7 @@ export default function AccountPage() {
                       type="text"
                       value={profile.fullName}
                       onChange={(e) => setProfile({ ...profile, fullName: e.target.value })}
-                      className="w-full h-14 pl-12 pr-4 bg-gray-50 border-2 border-transparent rounded-2xl outline-none focus:border-brand-primary/20 focus:bg-white transition-all font-bold text-text-main"
+                      className="w-full h-14 pl-12 pr-4 bg-surface-main border-2 border-transparent rounded-2xl outline-none focus:border-brand-primary/20 focus:bg-surface-card transition-all font-bold text-text-main"
                       placeholder="Your name"
                     />
                   </div>
@@ -270,7 +272,7 @@ export default function AccountPage() {
                       type="email"
                       value={profile.email}
                       onChange={(e) => setProfile({ ...profile, email: e.target.value })}
-                      className="w-full h-14 pl-12 pr-4 bg-gray-50 border-2 border-transparent rounded-2xl outline-none focus:border-brand-primary/20 focus:bg-white transition-all font-bold text-text-main"
+                      className="w-full h-14 pl-12 pr-4 bg-surface-main border-2 border-transparent rounded-2xl outline-none focus:border-brand-primary/20 focus:bg-surface-card transition-all font-bold text-text-main"
                       placeholder="hello@example.com"
                     />
                   </div>
@@ -280,7 +282,7 @@ export default function AccountPage() {
                 <div className="space-y-2">
                   <div className="flex items-center justify-between ml-1">
                     <label className="text-sm font-black text-text-main uppercase tracking-wider">Phone Number</label>
-                    <span className="text-[10px] font-black bg-gray-100 text-text-muted px-2 py-1 rounded-full uppercase tracking-widest">Locked</span>
+                    <span className="text-[10px] font-black bg-surface-main text-text-muted px-2 py-1 rounded-full uppercase tracking-widest">Locked</span>
                   </div>
                   <div className="relative">
                     <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-text-placeholder" />
@@ -288,7 +290,7 @@ export default function AccountPage() {
                       type="text"
                       value={profile.phone}
                       readOnly
-                      className="w-full h-14 pl-12 pr-4 bg-gray-50 border-2 border-transparent rounded-2xl outline-none font-bold text-text-muted cursor-not-allowed opacity-70"
+                      className="w-full h-14 pl-12 pr-4 bg-surface-main/30 border-2 border-transparent rounded-2xl outline-none font-bold text-text-muted cursor-not-allowed opacity-70"
                     />
                   </div>
                 </div>
@@ -302,7 +304,7 @@ export default function AccountPage() {
                       type="text"
                       value={profile.upiId}
                       onChange={(e) => setProfile({ ...profile, upiId: e.target.value })}
-                      className="w-full h-14 pl-12 pr-4 bg-gray-50 border-2 border-transparent rounded-2xl outline-none focus:border-brand-primary/20 focus:bg-white transition-all font-bold text-text-main"
+                      className="w-full h-14 pl-12 pr-4 bg-surface-main border-2 border-transparent rounded-2xl outline-none focus:border-brand-primary/20 focus:bg-surface-card transition-all font-bold text-text-main"
                       placeholder="example@upi"
                     />
                   </div>
@@ -326,14 +328,14 @@ export default function AccountPage() {
                 </button>
               </div>
 
-              <div className="bg-blue-50 border border-blue-100 rounded-3xl p-6 flex gap-4 mt-8">
-                <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm text-blue-500 shrink-0">
+              <div className="bg-brand-primary/5 dark:bg-brand-primary/10 border border-brand-primary/10 rounded-3xl p-6 flex gap-4 mt-8">
+                <div className="w-10 h-10 bg-surface-card rounded-xl flex items-center justify-center shadow-sm text-brand-primary shrink-0">
                   <AlertCircle className="w-5 h-5" />
                 </div>
                 <div>
                   <p className="text-blue-900 font-bold text-sm">Account Security</p>
                   <p className="text-blue-700/70 text-xs mt-1 font-medium leading-relaxed">
-                    You can update your profile details here. Email verification is not required. Keep your UPI ID current for seamless settlements.
+                    You can update your profile details here. If you change your email, a confirmation link will be sent to the new address.
                   </p>
                 </div>
               </div>
@@ -344,14 +346,14 @@ export default function AccountPage() {
 
       {/* Email Consent Popup */}
       <Modal isOpen={showConsent} onClose={() => setShowConsent(false)}>
-        <div className="bg-white rounded-[2.5rem] p-8 shadow-2xl text-center space-y-6">
-          <div className="w-20 h-20 bg-brand-light rounded-3xl flex items-center justify-center mx-auto text-4xl">
+        <div className="bg-surface-card rounded-[2.5rem] p-8 shadow-2xl text-center space-y-6">
+          <div className="w-20 h-20 bg-brand-light/30 rounded-3xl flex items-center justify-center mx-auto text-4xl">
             📬
           </div>
           <div>
-            <h3 className="text-2xl font-black text-text-main font-jakarta">Stay updated!</h3>
+            <h3 className="text-2xl font-black text-text-main font-jakarta">Confirm your email</h3>
             <p className="text-text-muted font-medium mt-2 leading-relaxed">
-              Confirm your email to receive split summaries and important billing updates.
+              We've sent a confirmation link to <b>{profile.email}</b>. Please click the link to verify your new email address.
             </p>
           </div>
           <div className="space-y-3">
@@ -359,7 +361,7 @@ export default function AccountPage() {
               onClick={() => setShowConsent(false)}
               className="w-full h-14 bg-brand-gradient text-white font-black rounded-2xl shadow-lg active:scale-95 transition-all"
             >
-              Yes, notify me!
+              I'll check my inbox
             </button>
             <button 
               onClick={() => setShowConsent(false)}

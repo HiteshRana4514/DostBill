@@ -120,7 +120,7 @@ export default function HelpPage() {
 
         {/* Right: Feedback Form */}
         <div className="lg:col-span-1">
-           <div className="bg-text-main rounded-[2.5rem] p-8 lg:p-10 text-white space-y-8 sticky top-8 shadow-floating">
+           <div className="bg-slate-950 rounded-[2.5rem] p-8 lg:p-10 text-white space-y-8 sticky top-8 shadow-floating border border-white/5">
               <div className="flex items-center gap-3">
                  <Sparkles className="w-6 h-6 text-brand-accent" />
                  <h3 className="text-2xl font-black">Feedback</h3>

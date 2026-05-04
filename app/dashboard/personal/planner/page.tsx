@@ -137,7 +137,7 @@ export default function PlannerPage() {
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
         
         {/* Calendar Card */}
-        <div className="lg:col-span-3 bg-white rounded-[2.5rem] border border-gray-100 shadow-sm p-4 md:p-8">
+        <div className="lg:col-span-3 bg-surface-card rounded-[2.5rem] border border-border-main shadow-sm p-4 md:p-8">
            <Calendar 
               onChange={onChange} 
               value={value} 
@@ -154,7 +154,7 @@ export default function PlannerPage() {
         <div className="space-y-8">
            
            {/* Daily Selection */}
-           <div className="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm space-y-6">
+           <div className="bg-surface-card rounded-[2.5rem] p-8 border border-border-main shadow-sm space-y-6">
               <div className="flex items-center justify-between">
                  <h3 className="text-xl font-black text-text-main">
                     {format(value, "MMMM d")}
@@ -197,7 +197,7 @@ export default function PlannerPage() {
            </div>
 
            {/* Monthly Exposure Card */}
-           <div className="bg-text-main rounded-[2.5rem] p-8 text-white shadow-lg space-y-6 relative overflow-hidden group">
+           <div className="bg-slate-950 rounded-[2.5rem] p-8 text-white shadow-lg space-y-6 relative overflow-hidden group border border-white/5">
               <div className="absolute top-0 right-0 p-6 opacity-10 transform group-hover:scale-110 transition-transform duration-500">
                  <TrendingDownIcon className="w-20 h-20" />
               </div>
@@ -229,7 +229,7 @@ export default function PlannerPage() {
       </div>
 
       {/* Full Month Agenda List (Responsive) */}
-      <div className="bg-white rounded-[2.5rem] border border-gray-100 shadow-sm p-8 md:p-12 space-y-8">
+      <div className="bg-surface-card rounded-[2.5rem] border border-border-main shadow-sm p-8 md:p-12 space-y-8">
          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
             <h3 className="text-2xl font-black text-text-main tracking-tight">Upcoming Schedule</h3>
             <div className="flex gap-2">
@@ -239,9 +239,9 @@ export default function PlannerPage() {
 
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {plannedExpenses.sort((a, b) => a.date.getTime() - b.date.getTime()).map(exp => (
-              <div key={exp.id} className="p-6 bg-gray-50/50 rounded-[2rem] border border-gray-100 hover:shadow-md transition-all space-y-6">
+              <div key={exp.id} className="p-6 bg-surface-main/30 rounded-[2rem] border border-border-main hover:shadow-md transition-all space-y-6">
                  <div className="flex items-center justify-between">
-                    <div className="px-3 py-1 bg-white rounded-full text-[10px] font-black text-text-muted uppercase tracking-widest shadow-sm">
+                    <div className="px-3 py-1 bg-surface-card rounded-full text-[10px] font-black text-text-muted uppercase tracking-widest shadow-sm">
                        {format(exp.date, "MMM d")}
                     </div>
                     {exp.status === 'scheduled' ? (
@@ -273,7 +273,7 @@ export default function PlannerPage() {
 
       {/* Add Schedule Modal */}
       <Modal isOpen={showAddModal} onClose={() => setShowAddModal(false)}>
-        <div className="bg-white rounded-[2.5rem] p-8 shadow-2xl space-y-8 animate-in zoom-in-95 duration-300">
+        <div className="bg-surface-card rounded-[2.5rem] p-8 shadow-2xl space-y-8 animate-in zoom-in-95 duration-300">
            <div className="space-y-2">
               <h3 className="text-2xl font-black text-text-main">Add Schedule</h3>
               <p className="text-text-muted font-medium text-sm">Planning for {format(value, "MMMM d, yyyy")}</p>

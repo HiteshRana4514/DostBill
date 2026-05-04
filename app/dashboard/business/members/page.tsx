@@ -62,8 +62,8 @@ export default function MembersPage() {
 
       {/* Stats Section */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-         <div className="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-sm flex items-center gap-6 group hover:border-brand-primary/20 transition-all">
-            <div className="w-16 h-16 bg-brand-light rounded-2xl flex items-center justify-center shrink-0">
+         <div className="bg-surface-card rounded-[2rem] p-8 border border-border-main shadow-sm flex items-center gap-6 group hover:border-brand-primary/20 transition-all">
+            <div className="w-16 h-16 bg-brand-light/30 rounded-2xl flex items-center justify-center shrink-0">
                <Shield className="w-8 h-8 text-brand-primary" />
             </div>
             <div>
@@ -71,8 +71,8 @@ export default function MembersPage() {
                <h3 className="text-3xl font-black text-text-main">{members.length}</h3>
             </div>
          </div>
-         <div className="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-sm flex items-center gap-6 hover:border-brand-primary/20 transition-all">
-            <div className="w-16 h-16 bg-green-50 rounded-2xl flex items-center justify-center shrink-0">
+         <div className="bg-surface-card rounded-[2rem] p-8 border border-border-main shadow-sm flex items-center gap-6 hover:border-brand-primary/20 transition-all">
+            <div className="w-16 h-16 bg-financial-success/10 rounded-2xl flex items-center justify-center shrink-0">
                <Shield className="w-8 h-8 text-financial-success" />
             </div>
             <div>
@@ -80,7 +80,7 @@ export default function MembersPage() {
                <h3 className="text-3xl font-black text-text-main">{members.filter(m => m.status === 'Active').length}</h3>
             </div>
          </div>
-         <div className="bg-text-main rounded-[2rem] p-8 text-white shadow-lg flex items-center gap-6">
+         <div className="bg-text-main rounded-[2rem] p-8 text-surface-card shadow-lg flex items-center gap-6">
             <div className="w-16 h-16 bg-white/10 rounded-2xl flex items-center justify-center shrink-0 backdrop-blur-sm">
                <Mail className="w-8 h-8 text-brand-accent" />
             </div>
@@ -92,20 +92,20 @@ export default function MembersPage() {
       </div>
 
       {/* Main Content Card */}
-      <div className="bg-white rounded-[2.5rem] border border-gray-100 shadow-sm overflow-hidden flex flex-col min-h-[600px]">
+      <div className="bg-surface-card rounded-[2.5rem] border border-border-main shadow-sm overflow-hidden flex flex-col min-h-[600px]">
          
          {/* Filters Bar */}
-         <div className="p-8 border-b border-gray-50 flex flex-col md:flex-row md:items-center justify-between gap-4">
+         <div className="p-8 border-b border-border-main flex flex-col md:flex-row md:items-center justify-between gap-4">
             <div className="relative flex-1 max-w-md">
                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-text-placeholder" />
                <input 
                  type="text" 
                  placeholder="Search members by name or email..." 
-                 className="w-full h-12 pl-12 pr-4 bg-gray-50 rounded-xl outline-none focus:bg-white focus:ring-2 focus:ring-brand-primary/10 transition-all font-medium text-sm"
+                 className="w-full h-12 pl-12 pr-4 bg-surface-main rounded-xl outline-none focus:bg-surface-card focus:ring-2 focus:ring-brand-primary/10 transition-all font-medium text-sm"
                />
             </div>
             <div className="flex gap-2">
-               <button className="h-12 px-6 bg-gray-50 rounded-xl font-bold text-sm text-text-main flex items-center gap-2 border border-gray-100">
+               <button className="h-12 px-6 bg-surface-main rounded-xl font-bold text-sm text-text-main flex items-center gap-2 border border-border-main">
                  <Filter className="w-4 h-4" /> Filter
                </button>
             </div>
@@ -115,7 +115,7 @@ export default function MembersPage() {
          <div className="flex-1 overflow-x-auto">
             <table className="w-full text-left border-collapse">
                <thead>
-                  <tr className="border-b border-gray-50">
+                  <tr className="border-b border-border-main">
                      <th className="px-8 py-6 text-[10px] font-black uppercase tracking-widest text-text-muted">Member</th>
                      <th className="px-8 py-6 text-[10px] font-black uppercase tracking-widest text-text-muted">Role</th>
                      <th className="px-8 py-6 text-[10px] font-black uppercase tracking-widest text-text-muted">Status</th>
@@ -125,10 +125,10 @@ export default function MembersPage() {
                </thead>
                <tbody>
                   {members.map((member) => (
-                    <tr key={member.id} className="group hover:bg-gray-50/50 transition-colors border-b border-gray-50">
+                    <tr key={member.id} className="group hover:bg-surface-main/50 transition-colors border-b border-border-main">
                        <td className="px-8 py-6">
                           <div className="flex items-center gap-4">
-                             <div className="w-12 h-12 bg-brand-light rounded-2xl flex items-center justify-center font-black text-brand-primary text-sm shadow-sm">
+                             <div className="w-12 h-12 bg-brand-light/30 rounded-2xl flex items-center justify-center font-black text-brand-primary text-sm shadow-sm">
                                 {member.avatar}
                              </div>
                              <div>
@@ -140,8 +140,8 @@ export default function MembersPage() {
                        <td className="px-8 py-6">
                           <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest border ${
                             member.role === 'Admin' ? 'border-brand-primary/20 text-brand-primary bg-brand-light/20' :
-                            member.role === 'Manager' ? 'border-text-main/20 text-text-main' :
-                            'border-gray-100 text-text-muted'
+                            member.role === 'Manager' ? 'border-border-main text-text-main' :
+                            'border-border-main text-text-muted'
                           }`}>
                             {member.role}
                           </span>
@@ -160,7 +160,7 @@ export default function MembersPage() {
                           {member.joinedDate}
                        </td>
                        <td className="px-8 py-6 text-right">
-                          <button className="p-2 hover:bg-gray-100 rounded-lg transition-colors text-text-muted hover:text-text-main">
+                          <button className="p-2 hover:bg-surface-main rounded-lg transition-colors text-text-muted hover:text-text-main">
                              <MoreHorizontal className="w-5 h-5" />
                           </button>
                        </td>
@@ -171,11 +171,11 @@ export default function MembersPage() {
          </div>
 
          {/* Pagination Placeholder */}
-         <div className="p-8 bg-gray-50/30 border-t border-gray-50 flex items-center justify-between">
+         <div className="p-8 bg-surface-main/30 border-t border-border-main flex items-center justify-between">
             <p className="text-xs text-text-muted font-bold tracking-widest uppercase">Showing {members.length} Members</p>
             <div className="flex gap-2">
-               <button className="px-4 py-2 bg-white border border-gray-100 rounded-lg text-xs font-black text-text-muted cursor-not-allowed">Prev</button>
-               <button className="px-4 py-2 bg-white border border-gray-100 rounded-lg text-xs font-black text-text-muted cursor-not-allowed">Next</button>
+               <button className="px-4 py-2 bg-surface-card border border-border-main rounded-lg text-xs font-black text-text-muted cursor-not-allowed">Prev</button>
+               <button className="px-4 py-2 bg-surface-card border border-border-main rounded-lg text-xs font-black text-text-muted cursor-not-allowed">Next</button>
             </div>
          </div>
       </div>

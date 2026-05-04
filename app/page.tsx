@@ -11,9 +11,12 @@ import DownloadApp from "@/components/DownloadApp";
 import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
 
+import ForceLight from "@/components/shared/ForceLight";
+
 export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white font-jakarta selection:bg-brand-primary selection:text-white">
+      <ForceLight />
       <Navbar />
       <main>
         <Hero />

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 import { Loader2, AlertCircle, Eye, EyeOff } from "lucide-react";
+import ForceLight from "@/components/shared/ForceLight";
 
 export default function LoginPage() {
     // 'password' = default login, 'otp_request' = user forgot password, 'otp_verify' = waiting for 6 digits
@@ -84,26 +85,9 @@ export default function LoginPage() {
         }
     };
 
-    // const handleGoogleLogin = async () => {
-    //     setLoading(true);
-    //     setError('');
-    //     try {
-    //         const { error: sbError } = await supabase.auth.signInWithOAuth({
-    //             provider: 'google',
-    //             options: {
-    //                 redirectTo: `${window.location.origin}/`,
-    //             },
-    //         });
-    //         if (sbError) throw sbError;
-    //     } catch (err: any) {
-    //         setError(err.message || 'Failed to sign in with Google');
-    //     } finally {
-    //         setLoading(false);
-    //     }
-    // };
-
     return (
-        <div className="min-h-screen flex w-full font-jakarta bg-surface-main">
+        <div className="min-h-screen flex w-full font-jakarta bg-surface-main text-text-main">
+            <ForceLight />
 
             {/* LEFT PANEL - Hidden on Mobile, Visible on Desktop */}
             <div className="hidden lg:flex w-1/2 bg-gradient-to-b from-[#FF8C42] to-[#FF6B1A] p-12 text-white flex-col items-center justify-center relative overflow-hidden">
@@ -175,7 +159,7 @@ export default function LoginPage() {
                     </div>
 
                     {/* Feature Checklist */}
-                    <div className="space-y-3 w-full">
+                    <div className="space-y-3 w-full text-white">
                         <div className="flex items-center gap-3">
                             <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center text-sm">✓</div>
                             <p className="text-sm opacity-90">Split equally or custom — your choice</p>
@@ -197,7 +181,7 @@ export default function LoginPage() {
             </div>
 
             {/* RIGHT PANEL - The Login Form */}
-            <div className="flex-1 flex items-center justify-center p-6 lg:p-12 relative">
+            <div className="flex-1 flex items-center justify-center p-6 lg:p-12 relative overflow-y-auto">
 
                 <Link href="/" className="absolute top-8 left-8 lg:hidden block">
                      <img src="/logo.png" alt="DostBill" className="h-10 w-auto object-contain" />
@@ -221,7 +205,7 @@ export default function LoginPage() {
                         {/* Phone Number Field */}
                         <div>
                             <label className="block text-sm font-semibold text-text-main mb-1.5">Phone Number</label>
-                            <div className="flex">
+                            <div className="flex text-text-main">
                                 <span className="inline-flex items-center px-4 rounded-l-md border border-r-0 border-gray-200 bg-gray-50 text-text-muted font-medium">
                                     +91
                                 </span>
@@ -242,7 +226,7 @@ export default function LoginPage() {
                                 <div className="flex justify-between items-center mb-1.5">
                                     <label className="block text-sm font-semibold text-text-main">Password</label>
                                 </div>
-                                <div className="relative">
+                                <div className="relative text-text-main">
                                     <input
                                         type={showPassword ? "text" : "password"}
                                         placeholder="••••••••"
@@ -269,7 +253,7 @@ export default function LoginPage() {
                                     type="text"
                                     placeholder="123456"
                                     maxLength={6}
-                                    className="block w-full px-4 py-3 text-center tracking-widest text-lg font-bold rounded-md border border-gray-200 focus:ring-brand-primary focus:border-brand-primary outline-none transition-colors"
+                                    className="block w-full px-4 py-3 text-center tracking-widest text-lg font-bold rounded-md border border-gray-200 focus:ring-brand-primary focus:border-brand-primary outline-none transition-colors text-text-main"
                                     required
                                     onChange={(e) => setOtp(e.target.value)}
                                 />
@@ -311,21 +295,11 @@ export default function LoginPage() {
                         )}
                     </div>
 
-                    {/* Social / Alternate Login */}
                     <div className="mt-8 flex items-center justify-center">
                         <div className="border-t border-gray-200 flex-1"></div>
                         <span className="px-3 text-sm text-text-muted">or</span>
                         <div className="border-t border-gray-200 flex-1"></div>
                     </div>
-
-                    {/* <button 
-                        onClick={handleGoogleLogin}
-                        disabled={loading}
-                        className="mt-6 w-full flex items-center justify-center gap-3 bg-white border border-gray-200 text-text-main font-semibold py-3 px-4 rounded-xl hover:bg-gray-50 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
-                    >
-                        <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5" />
-                        Continue with Google
-                    </button> */}
 
                     {/* Signup Link */}
                     <p className="mt-8 text-center text-sm text-text-muted">

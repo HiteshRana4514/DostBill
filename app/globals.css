@@ -1,26 +1,66 @@
 @import "tailwindcss";
 
+:root {
+  --brand-primary: #F5620F;
+  --brand-secondary: #F5880F;
+  --brand-accent: #FFBC00;
+  --brand-light: #FFF0E6;
+
+  --financial-success: #10B981;
+  --financial-success-bg: #D1FAE5;
+  --financial-danger: #EF4444;
+  --financial-danger-bg: #FEE2E2;
+
+  --surface-main: #FDFEFE;
+  --surface-card: #FFFFFF;
+
+  --text-main: #0F172A;
+  --text-muted: #64748B;
+  --text-placeholder: #94A3B8;
+
+  --border-main: #f1f5f9;
+}
+
+.dark {
+  --brand-light: #2D1A0F;
+  
+  --financial-success-bg: rgba(16, 185, 129, 0.1);
+  --financial-danger-bg: rgba(239, 68, 68, 0.1);
+
+  --surface-main: #080C14;
+  --surface-card: #0F172A;
+
+  --text-main: #F8FAFC;
+  --text-muted: #94A3B8;
+  --text-placeholder: #64748B;
+
+  --border-main: #1e293b;
+}
+
 @theme {
   /* --- BRAND COLORS --- */
-  --color-brand-primary: #F5620F;
-  --color-brand-secondary: #F5880F;
-  --color-brand-accent: #FFBC00;
-  --color-brand-light: #FFF0E6;
+  --color-brand-primary: var(--brand-primary);
+  --color-brand-secondary: var(--brand-secondary);
+  --color-brand-accent: var(--brand-accent);
+  --color-brand-light: var(--brand-light);
 
   /* --- FINANCIAL COLORS --- */
-  --color-financial-success: #10B981;
-  --color-financial-success-bg: #D1FAE5;
-  --color-financial-danger: #EF4444;
-  --color-financial-danger-bg: #FEE2E2;
+  --color-financial-success: var(--financial-success);
+  --color-financial-success-bg: var(--financial-success-bg);
+  --color-financial-danger: var(--financial-danger);
+  --color-financial-danger-bg: var(--financial-danger-bg);
 
   /* --- SURFACE COLORS --- */
-  --color-surface-main: #FDFEFE;
-  --color-surface-card: #FFFFFF;
+  --color-surface-main: var(--surface-main);
+  --color-surface-card: var(--surface-card);
 
   /* --- TEXT COLORS --- */
-  --color-text-main: #0F172A;
-  --color-text-muted: #64748B;
-  --color-text-placeholder: #94A3B8;
+  --color-text-main: var(--text-main);
+  --color-text-muted: var(--text-muted);
+  --color-text-placeholder: var(--text-placeholder);
+
+  /* --- BORDER COLORS --- */
+  --color-border-main: var(--border-main);
 
   /* --- FONTS --- */
   --font-jakarta: var(--font-plus-jakarta), sans-serif;
@@ -43,7 +83,7 @@
 
 @layer utilities {
   .bento-card {
-    @apply bg-white border border-gray-100 shadow-sm transition-all duration-300;
+    @apply bg-surface-card border border-border-main shadow-sm transition-all duration-300;
 
     &:hover {
       @apply border-brand-primary/20 shadow-md transform -translate-y-0.5;
@@ -51,7 +91,7 @@
   }
 
   .mesh-bg {
-    background-color: #fafafa;
+    background-color: var(--surface-main);
     background-image:
       radial-gradient(at 100% 0%, rgba(245, 98, 15, 0.03) 0px, transparent 50%),
       radial-gradient(at 0% 100%, rgba(255, 188, 0, 0.03) 0px, transparent 50%);
@@ -68,7 +108,7 @@
 
 /* --- SKELETON LOADERS --- */
 .skeleton {
-  background-color: #f1f5f9;
+  background-color: var(--border-main);
   position: relative;
   overflow: hidden;
   min-height: 1rem;
@@ -84,11 +124,19 @@
   left: 0;
   transform: translateX(-100%);
   background-image: linear-gradient(90deg,
-      rgba(255, 255, 255, 0) 0,
-      rgba(255, 255, 255, 0.4) 30%,
-      rgba(255, 255, 255, 0.7) 60%,
-      rgba(255, 255, 255, 0));
+      transparent 0,
+      rgba(255, 255, 255, 0.05) 30%,
+      rgba(255, 255, 255, 0.1) 60%,
+      transparent);
   animation: shimmer 2.5s infinite linear;
+}
+
+.dark .skeleton::after {
+  background-image: linear-gradient(90deg,
+      transparent 0,
+      rgba(255, 255, 255, 0.03) 30%,
+      rgba(255, 255, 255, 0.05) 60%,
+      transparent);
 }
 
 @keyframes shimmer {

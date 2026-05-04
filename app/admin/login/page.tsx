@@ -13,6 +13,7 @@ import {
   ShieldAlert
 } from "lucide-react";
 import Link from "next/link";
+import ForceLight from "@/components/shared/ForceLight";
 
 export default function AdminLoginPage() {
     const [email, setEmail] = useState('');
@@ -52,6 +53,7 @@ export default function AdminLoginPage() {
 
     return (
         <div className="min-h-screen flex items-center justify-center p-6 bg-surface-main mesh-bg relative overflow-hidden">
+            <ForceLight />
             
             {/* Background Accent */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-brand-primary/5 rounded-full blur-[120px] pointer-events-none" />

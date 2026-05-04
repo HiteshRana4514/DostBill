@@ -40,42 +40,42 @@ export default function MyExpensesPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-sm space-y-2">
+        <div className="bg-surface-card rounded-[2rem] p-8 border border-border-main shadow-sm space-y-2">
             <p className="text-[10px] font-black uppercase tracking-widest text-text-muted">Total This Month</p>
             <h3 className="text-3xl font-black text-text-main">₹12,450</h3>
             <p className="text-xs text-financial-danger font-bold flex items-center gap-1">↑ 12% from last month</p>
         </div>
-        <div className="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-sm space-y-2">
+        <div className="bg-surface-card rounded-[2rem] p-8 border border-border-main shadow-sm space-y-2">
             <p className="text-[10px] font-black uppercase tracking-widest text-text-muted">Available Balance</p>
             <h3 className="text-3xl font-black text-text-main">₹45,200</h3>
             <p className="text-xs text-financial-success font-bold flex items-center gap-1">Healthy Status</p>
         </div>
-        <div className="bg-white rounded-[2rem] p-8 border border-gray-100 shadow-sm space-y-2 text-white bg-text-main">
+        <div className="bg-text-main rounded-[2rem] p-8 border border-border-main shadow-sm space-y-2 text-surface-card">
             <p className="text-[10px] font-black uppercase tracking-widest text-white/40">Average Daily</p>
             <h3 className="text-3xl font-black">₹415</h3>
             <p className="text-xs text-white/60 font-bold">Within budget limits</p>
         </div>
       </div>
 
-      <div className="bg-white rounded-[2.5rem] border border-gray-100 shadow-sm overflow-hidden">
-        <div className="p-8 border-b border-gray-50 flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div className="bg-surface-card rounded-[2.5rem] border border-border-main shadow-sm overflow-hidden">
+        <div className="p-8 border-b border-border-main flex flex-col md:flex-row md:items-center justify-between gap-4">
            <div className="relative flex-1 max-w-md">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-text-placeholder" />
               <input 
                 type="text" 
                 placeholder="Search personal expenses..." 
-                className="w-full h-12 pl-12 pr-4 bg-gray-50 rounded-xl outline-none focus:bg-white focus:ring-2 focus:ring-brand-primary/10 transition-all font-medium text-sm"
+                className="w-full h-12 pl-12 pr-4 bg-surface-main rounded-xl outline-none focus:bg-surface-card focus:ring-2 focus:ring-brand-primary/10 transition-all font-medium text-sm"
               />
            </div>
            <div className="flex gap-2">
-              <button className="h-12 px-6 bg-gray-50 rounded-xl font-bold text-sm text-text-main flex items-center gap-2 hover:bg-gray-100 transition-all border border-gray-100">
+              <button className="h-12 px-6 bg-surface-main rounded-xl font-bold text-sm text-text-main flex items-center gap-2 hover:bg-surface-main/80 transition-all border border-border-main">
                 <Filter className="w-4 h-4" /> Filter
               </button>
            </div>
         </div>
         
         <div className="p-20 text-center space-y-6">
-           <div className="w-20 h-20 bg-brand-light rounded-3xl flex items-center justify-center mx-auto text-4xl">
+           <div className="w-20 h-20 bg-brand-light/30 rounded-3xl flex items-center justify-center mx-auto text-4xl">
              🧾
            </div>
            <div className="max-w-xs mx-auto">

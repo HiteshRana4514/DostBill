@@ -8,6 +8,7 @@ import { Menu, Loader2 } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 
+
 export default function DashboardLayout({
   children,
 }: {

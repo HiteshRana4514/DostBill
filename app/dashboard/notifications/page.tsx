@@ -152,14 +152,14 @@ export default function NotificationsPage() {
            <button 
              onClick={markAllRead}
              disabled={notifications.length === 0 || notifications.every(n => n.isRead)}
-             className="px-6 h-12 bg-gray-50 border border-gray-100 text-text-main font-bold rounded-2xl flex items-center gap-2 hover:bg-gray-100 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+             className="px-6 h-12 bg-surface-main border border-border-main text-text-main font-bold rounded-2xl flex items-center gap-2 hover:bg-surface-main/80 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
            >
              <CheckCheck className="w-4 h-4" /> Mark all read
            </button>
            <button 
              onClick={clearAll}
              disabled={notifications.length === 0}
-             className="px-6 h-12 bg-red-50 border border-red-100 text-red-500 font-bold rounded-2xl flex items-center gap-2 hover:bg-red-100 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+             className="px-6 h-12 bg-red-500/10 border border-red-500/20 text-red-500 font-bold rounded-2xl flex items-center gap-2 hover:bg-red-500/20 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
            >
              <Trash2 className="w-4 h-4" /> Clear All
            </button>
@@ -167,16 +167,16 @@ export default function NotificationsPage() {
       </div>
 
       {/* Filter Tabs */}
-      <div className="flex gap-2 p-1.5 bg-gray-50 rounded-2xl w-fit border border-gray-100">
+      <div className="flex gap-2 p-1.5 bg-surface-main rounded-2xl w-fit border border-border-main">
          <button 
            onClick={() => setFilter("all")}
-           className={`px-6 py-2.5 rounded-xl font-bold text-sm transition-all ${filter === "all" ? "bg-white text-text-main shadow-sm" : "text-text-muted hover:text-text-main"}`}
+           className={`px-6 py-2.5 rounded-xl font-bold text-sm transition-all ${filter === "all" ? "bg-surface-card text-text-main shadow-sm" : "text-text-muted hover:text-text-main"}`}
          >
            All Activity
          </button>
          <button 
            onClick={() => setFilter("unread")}
-           className={`px-6 py-2.5 rounded-xl font-bold text-sm transition-all ${filter === "unread" ? "bg-white text-text-main shadow-sm" : "text-text-muted hover:text-text-main"}`}
+           className={`px-6 py-2.5 rounded-xl font-bold text-sm transition-all ${filter === "unread" ? "bg-surface-card text-text-main shadow-sm" : "text-text-muted hover:text-text-main"}`}
          >
            Unread
          </button>
@@ -188,13 +188,13 @@ export default function NotificationsPage() {
           filteredNotifications.map((notif) => (
             <div 
               key={notif.id}
-              className={`group bg-white rounded-[2rem] p-6 border transition-all hover:shadow-md flex items-center gap-6 ${notif.isRead ? "border-gray-100 opacity-80" : "border-brand-primary/10 shadow-sm"}`}
+              className={`group bg-surface-card rounded-[2rem] p-6 border transition-all hover:shadow-md flex items-center gap-6 ${notif.isRead ? "border-border-main opacity-80" : "border-brand-primary/10 shadow-sm"}`}
             >
               {/* Type Icon */}
               <div className={`w-14 h-14 rounded-2xl flex items-center justify-center shrink-0 ${
-                notif.type === 'settlement' ? 'bg-green-50' : 
-                notif.type === 'invite' ? 'bg-blue-50' : 
-                notif.type === 'expense' ? 'bg-orange-50' : 'bg-purple-50'
+                notif.type === 'settlement' ? 'bg-financial-success/10' : 
+                notif.type === 'invite' ? 'bg-blue-500/10' : 
+                notif.type === 'expense' ? 'bg-orange-500/10' : 'bg-purple-500/10'
               }`}>
                 {getTypeIcon(notif.type)}
               </div>
@@ -216,7 +216,7 @@ export default function NotificationsPage() {
                  {!notif.isRead && (
                    <button 
                      onClick={() => markAsRead(notif.id)}
-                     className="p-3 bg-gray-50 text-text-muted hover:bg-green-50 hover:text-green-600 rounded-xl transition-all"
+                     className="p-3 bg-surface-main text-text-muted hover:bg-financial-success/10 hover:text-financial-success rounded-xl transition-all"
                      title="Mark as read"
                    >
                      <CheckCheck className="w-5 h-5" />
@@ -224,7 +224,7 @@ export default function NotificationsPage() {
                  )}
                  <button 
                    onClick={() => deleteNotification(notif.id)}
-                   className="p-3 bg-gray-50 text-text-muted hover:bg-red-50 hover:text-red-500 rounded-xl transition-all"
+                   className="p-3 bg-surface-main text-text-muted hover:bg-red-500/10 hover:text-red-500 rounded-xl transition-all"
                    title="Delete"
                  >
                    <Trash2 className="w-5 h-5" />
@@ -233,8 +233,8 @@ export default function NotificationsPage() {
             </div>
           ))
         ) : (
-          <div className="bg-white rounded-[2.5rem] border border-dashed border-gray-200 p-20 text-center space-y-6">
-            <div className="w-24 h-24 bg-gray-50 rounded-[2rem] flex items-center justify-center mx-auto text-4xl grayscale opacity-50">
+          <div className="bg-surface-card rounded-[2.5rem] border border-dashed border-border-main p-20 text-center space-y-6">
+            <div className="w-24 h-24 bg-surface-main rounded-[2rem] flex items-center justify-center mx-auto text-4xl grayscale opacity-50">
               📭
             </div>
             <div>
@@ -254,17 +254,17 @@ export default function NotificationsPage() {
       </div>
 
       {/* Subscription Card */}
-      <div className="bg-text-main rounded-[2.5rem] p-8 md:p-12 text-white relative overflow-hidden group">
+      <div className="bg-slate-950 rounded-[2.5rem] p-8 md:p-12 text-white relative overflow-hidden group border border-white/5 shadow-2xl">
          <div className="absolute top-0 right-0 p-8 opacity-10 transform group-hover:scale-110 transition-transform duration-500">
             <Bell className="w-40 h-40" />
          </div>
          <div className="relative z-10 max-w-xl space-y-6">
             <h2 className="text-3xl font-black">Stay on top of your bills</h2>
             <p className="text-white/60 font-medium leading-relaxed">
-              Enable real-time push notifications so you never miss a split or a settlement request from your friends.
+               Enable real-time push notifications so you never miss a split or a settlement request from your friends.
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
-               <button className="h-14 px-8 bg-brand-gradient text-white font-black rounded-2xl shadow-lg active:scale-95 transition-all">
+               <button className="h-14 px-8 bg-brand-gradient text-white font-black rounded-2xl shadow-lg hover:shadow-brand-primary/20 active:scale-95 transition-all">
                   Enable Browser Alerts
                </button>
                <button className="h-14 px-8 bg-white/10 hover:bg-white/20 text-white font-black rounded-2xl border border-white/20 transition-all">

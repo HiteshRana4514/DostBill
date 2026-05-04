@@ -42,8 +42,8 @@ export default function SavingsPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         
         {/* Total Savings Card */}
-        <div className="lg:col-span-1 bg-white rounded-[2.5rem] p-10 border border-gray-100 shadow-sm space-y-8">
-            <div className="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center text-financial-success shadow-inner">
+        <div className="lg:col-span-1 bg-surface-card rounded-[2.5rem] p-10 border border-border-main shadow-sm space-y-8">
+            <div className="w-14 h-14 bg-financial-success/10 rounded-2xl flex items-center justify-center text-financial-success shadow-inner">
                <TrendingUp className="w-8 h-8" />
             </div>
             <div className="space-y-1">
@@ -51,11 +51,11 @@ export default function SavingsPage() {
                <h2 className="text-5xl font-black text-text-main tracking-tight">₹1,24,000</h2>
             </div>
             <div className="flex gap-4">
-                <div className="flex-1 bg-gray-50 rounded-2xl p-4 space-y-1">
+                <div className="flex-1 bg-surface-main rounded-2xl p-4 space-y-1">
                    <p className="text-[8px] font-black uppercase tracking-widest text-text-muted">Invested</p>
                    <p className="font-black text-text-main">₹85K</p>
                 </div>
-                <div className="flex-1 bg-gray-50 rounded-2xl p-4 space-y-1">
+                <div className="flex-1 bg-surface-main rounded-2xl p-4 space-y-1">
                    <p className="text-[8px] font-black uppercase tracking-widest text-text-muted">Liquid Cash</p>
                    <p className="font-black text-text-main">₹39K</p>
                 </div>
@@ -68,11 +68,11 @@ export default function SavingsPage() {
               { id: "1", title: "New MacBook Pro", target: 180000, current: 45000, icon: "💻", color: "from-blue-500 to-indigo-600" },
               { id: "2", title: "Emergency Fund", target: 50000, current: 35000, icon: "🛡️", color: "from-green-500 to-emerald-600" },
             ].map(goal => (
-              <div key={goal.id} className="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm space-y-6 relative overflow-hidden group">
+              <div key={goal.id} className="bg-surface-card rounded-[2.5rem] p-8 border border-border-main shadow-sm space-y-6 relative overflow-hidden group">
                  <div className={`absolute top-0 right-0 w-24 h-24 bg-gradient-to-br ${goal.color} opacity-5 rounded-bl-[4rem] group-hover:scale-110 transition-transform`} />
                  <div className="flex items-center justify-between">
                     <span className="text-3xl">{goal.icon}</span>
-                    <div className="px-3 py-1 bg-gray-50 rounded-full text-[8px] font-black text-text-muted uppercase tracking-widest">
+                    <div className="px-3 py-1 bg-surface-main rounded-full text-[8px] font-black text-text-muted uppercase tracking-widest">
                        {Math.round((goal.current/goal.target)*100)}% Complete
                     </div>
                  </div>
@@ -81,7 +81,7 @@ export default function SavingsPage() {
                     <p className="text-xs text-text-muted font-medium mt-1">₹{goal.current.toLocaleString()} / ₹{goal.target.toLocaleString()}</p>
                  </div>
                  <div className="space-y-2">
-                    <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
+                    <div className="h-2 bg-surface-main rounded-full overflow-hidden">
                        <div 
                          className={`h-full bg-gradient-to-r ${goal.color} transition-all duration-1000`} 
                          style={{ width: `${(goal.current/goal.target)*100}%` }}
@@ -98,20 +98,20 @@ export default function SavingsPage() {
       </div>
 
       {/* Suggested Saving Plan */}
-      <div className="bg-text-main rounded-[2.5rem] p-10 text-white flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
-         <div className="absolute inset-0 bg-brand-gradient opacity-5" />
+      <div className="bg-slate-950 rounded-[2.5rem] p-10 text-white flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden border border-white/5 shadow-2xl">
+         <div className="absolute inset-0 bg-brand-gradient opacity-10" />
          <div className="flex gap-6 relative z-10">
             <div className="w-16 h-16 bg-white/10 rounded-[1.5rem] flex items-center justify-center text-white shrink-0 shadow-inner">
                <PiggyBank className="w-8 h-8" />
             </div>
             <div className="space-y-2">
                <h3 className="text-2xl font-black">Join the 50/30/20 Challenge</h3>
-               <p className="text-white/40 text-sm font-medium leading-relaxed max-w-sm">
+               <p className="text-white/60 text-sm font-medium leading-relaxed max-w-sm">
                  We've calculated that you can save an extra <span className="text-white font-bold">₹2,400</span> this month by optimizing your utilities.
                </p>
             </div>
          </div>
-         <button className="h-14 px-10 bg-white text-text-main font-black rounded-2xl shadow-xl hover:scale-105 active:scale-95 transition-all relative z-10">
+         <button className="h-14 px-10 bg-brand-gradient text-white font-black rounded-2xl shadow-xl hover:scale-105 active:scale-95 transition-all relative z-10">
             Activate Auto-Save
          </button>
       </div>

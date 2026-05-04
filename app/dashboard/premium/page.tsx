@@ -132,14 +132,14 @@ export default function PremiumPage() {
 
         {/* Frequency Switcher */}
         <div className="flex items-center justify-center pt-4">
-           <div className="p-1.5 bg-gray-100 rounded-2xl flex gap-1 border border-gray-200 shadow-inner">
+           <div className="p-1.5 bg-surface-main rounded-2xl flex gap-1 border border-border-main shadow-inner">
               {(["monthly", "quarterly", "yearly"] as Frequency[]).map(freq => (
                 <button
                   key={freq}
                   onClick={() => setFrequency(freq)}
                   className={`px-8 py-3 rounded-xl font-black text-xs uppercase tracking-widest transition-all ${
                     frequency === freq 
-                    ? "bg-white text-text-main shadow-sm scale-105" 
+                    ? "bg-surface-card text-text-main shadow-sm scale-105" 
                     : "text-text-muted hover:text-text-main"
                   }`}
                 >
@@ -158,10 +158,10 @@ export default function PremiumPage() {
         {plans.map((plan) => (
           <div 
             key={plan.name}
-            className={`relative group bg-white rounded-[3rem] p-10 border transition-all duration-500 hover:shadow-floating ${
+            className={`relative group bg-surface-card rounded-[3rem] p-10 border transition-all duration-500 hover:shadow-floating ${
               plan.highlight 
               ? "border-brand-primary/20 shadow-xl scale-105 z-10" 
-              : "border-gray-100 hover:border-brand-primary/10 shadow-sm"
+              : "border-border-main hover:border-brand-primary/10 shadow-sm"
             }`}
           >
             {plan.tag && (
@@ -193,7 +193,7 @@ export default function PremiumPage() {
               <ul className="space-y-4 pt-4">
                 {plan.features.map((feature, i) => (
                   <li key={i} className="flex items-start gap-3">
-                    <div className={`mt-1 p-0.5 rounded-full ${plan.highlight ? 'bg-brand-primary/10 text-brand-primary' : 'bg-gray-100 text-text-muted'}`}>
+                    <div className={`mt-1 p-0.5 rounded-full ${plan.highlight ? 'bg-brand-primary/10 text-brand-primary' : 'bg-surface-main text-text-muted'}`}>
                       <Check className="w-3 h-3" />
                     </div>
                     <span className="text-sm font-medium text-text-main/80">{feature}</span>
@@ -206,10 +206,10 @@ export default function PremiumPage() {
                 disabled={plan.isFree}
                 className={`w-full h-14 rounded-2xl font-black text-sm uppercase tracking-widest transition-all active:scale-95 shadow-lg ${
                   plan.isFree 
-                  ? "bg-gray-50 text-text-muted cursor-default shadow-none border border-gray-100" 
+                  ? "bg-surface-main text-text-muted cursor-default shadow-none border border-border-main" 
                   : plan.highlight 
                   ? "bg-brand-gradient text-white hover:opacity-90" 
-                  : "bg-text-main text-white hover:bg-black"
+                  : "bg-text-main text-surface-card hover:opacity-90"
                 }`}
               >
                 {plan.cta}
@@ -222,7 +222,7 @@ export default function PremiumPage() {
       {/* Offers Section */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
          {/* Lifetime Access Offer */}
-         <div className="bg-text-main rounded-[3rem] p-10 text-white relative overflow-hidden group">
+         <div className="bg-text-main rounded-[3rem] p-10 text-surface-card relative overflow-hidden group">
             <div className="absolute top-0 right-0 p-10 opacity-10 transform group-hover:rotate-12 transition-transform duration-700">
                <Zap className="w-48 h-48 fill-brand-accent text-brand-accent" />
             </div>
@@ -234,13 +234,13 @@ export default function PremiumPage() {
                <h2 className="text-4xl font-black tracking-tight leading-tight">
                  Get Lifetime Access to <span className="text-brand-accent">Pro +</span>
                </h2>
-               <p className="text-white/60 font-medium leading-relaxed max-w-md">
+               <p className="text-surface-card/60 font-medium leading-relaxed max-w-md">
                  Pay once and enjoy all premium features forever. No subscriptions, no renewals, just pure financial peace of mind.
                </p>
                <div className="flex items-center gap-6 pt-2">
                   <div className="flex flex-col">
-                     <span className="text-3xl font-black">₹999</span>
-                     <span className="text-[10px] uppercase font-black tracking-widest text-white/40">One-time payment</span>
+                     <span className="text-3xl font-black text-surface-card">₹999</span>
+                     <span className="text-[10px] uppercase font-black tracking-widest text-surface-card/40">One-time payment</span>
                   </div>
                   <button className="h-14 px-8 bg-brand-gradient text-white font-black rounded-2xl shadow-xl hover:opacity-90 active:scale-95 transition-all">
                      Secure Lifetime Now
@@ -251,8 +251,8 @@ export default function PremiumPage() {
 
          {/* Promo Grid */}
          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm flex flex-col justify-between group cursor-pointer hover:border-brand-primary/20 transition-all">
-               <div className="w-12 h-12 bg-orange-50 rounded-2xl flex items-center justify-center text-brand-primary shadow-inner mb-6 transition-transform group-hover:scale-110">
+            <div className="bg-surface-card rounded-[2.5rem] p-8 border border-border-main shadow-sm flex flex-col justify-between group cursor-pointer hover:border-brand-primary/20 transition-all">
+               <div className="w-12 h-12 bg-brand-light/50 rounded-2xl flex items-center justify-center text-brand-primary shadow-inner mb-6 transition-transform group-hover:scale-110">
                   <Gift className="w-6 h-6" />
                </div>
                <div>
@@ -264,8 +264,8 @@ export default function PremiumPage() {
                </div>
             </div>
 
-            <div className="bg-white rounded-[2.5rem] p-8 border border-gray-100 shadow-sm flex flex-col justify-between group cursor-pointer hover:border-brand-primary/20 transition-all">
-               <div className="w-12 h-12 bg-green-50 rounded-2xl flex items-center justify-center text-financial-success shadow-inner mb-6 transition-transform group-hover:scale-110">
+            <div className="bg-surface-card rounded-[2.5rem] p-8 border border-border-main shadow-sm flex flex-col justify-between group cursor-pointer hover:border-brand-primary/20 transition-all">
+               <div className="w-12 h-12 bg-financial-success/10 rounded-2xl flex items-center justify-center text-financial-success shadow-inner mb-6 transition-transform group-hover:scale-110">
                   <UserPlus className="w-6 h-6" />
                </div>
                <div>
@@ -280,9 +280,9 @@ export default function PremiumPage() {
       </div>
 
       {/* Security Banner */}
-      <div className="bg-gray-50 border border-gray-100 rounded-[2.5rem] p-10 flex flex-col md:flex-row items-center gap-8 justify-between">
+      <div className="bg-surface-main border border-border-main rounded-[2.5rem] p-10 flex flex-col md:flex-row items-center gap-8 justify-between">
          <div className="flex gap-4">
-            <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-sm text-financial-success shrink-0">
+            <div className="w-14 h-14 bg-surface-card rounded-2xl flex items-center justify-center shadow-sm text-financial-success shrink-0">
                <ShieldCheck className="w-8 h-8" />
             </div>
             <div className="space-y-1">
@@ -290,7 +290,7 @@ export default function PremiumPage() {
                <p className="text-text-muted text-sm font-medium">All payments are encrypted and processed via major gateways. Auto-pay can be canceled anytime from your dashboard.</p>
             </div>
          </div>
-         <div className="flex gap-4 opacity-50 grayscale hover:grayscale-0 transition-all">
+         <div className="flex gap-4 opacity-50 grayscale hover:grayscale-0 transition-all text-text-main">
             <CreditCard className="w-8 h-8" />
             <Smartphone className="w-8 h-8" />
             <Zap className="w-8 h-8" />

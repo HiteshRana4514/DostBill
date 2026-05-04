@@ -5,6 +5,7 @@ import Link from "next/link";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 import { Loader2, AlertCircle, Eye, EyeOff } from "lucide-react";
+import ForceLight from "@/components/shared/ForceLight";
 
 export default function SignupPage() {
     const [otpSent, setOtpSent] = useState(false);
@@ -87,27 +88,9 @@ export default function SignupPage() {
         }
     };
 
-    // const handleGoogleSignup = async () => {
-    //     setLoading(true);
-    //     setError('');
-    //     try {
-    //         const { error: sbError } = await supabase.auth.signInWithOAuth({
-    //             provider: 'google',
-    //             options: {
-    //                 redirectTo: `${window.location.origin}/`,
-    //             },
-    //         });
-    //         if (sbError) throw sbError;
-    //     } catch (err: any) {
-    //         setError(err.message || 'Failed to sign up with Google');
-    //     } finally {
-    //         setLoading(false);
-    //     }
-    // };
-
-
     return (
-        <div className="min-h-screen flex w-full font-jakarta bg-surface-main">
+        <div className="min-h-screen flex w-full font-jakarta bg-surface-main text-text-main">
+            <ForceLight />
 
             {/* LEFT PANEL - Hidden on Mobile, Visible on Desktop */}
             <div className="hidden lg:flex w-1/2 bg-gradient-to-b from-[#FF8C42] to-[#FF6B1A] p-12 text-white flex-col items-center justify-center relative overflow-hidden">
@@ -125,11 +108,11 @@ export default function SignupPage() {
 
                     {/* Get Started Steps Card */}
                     <div className="w-full bg-white/10 backdrop-blur-sm rounded-3xl p-8 border border-white/20 mb-8">
-                        <h2 className="text-xs font-bold uppercase tracking-wider mb-6 opacity-90">
+                        <h2 className="text-xs font-bold uppercase tracking-wider mb-6 opacity-90 text-white">
                             GET STARTED IN 3 STEPS
                         </h2>
 
-                        <div className="space-y-5">
+                        <div className="space-y-5 text-white">
                             {/* Step 1 */}
                             <div className="flex gap-4 items-start">
                                 <div className="w-9 h-9 rounded-full bg-white text-orange-600 flex items-center justify-center font-bold text-base shrink-0">
@@ -172,17 +155,17 @@ export default function SignupPage() {
                     </div>
 
                     {/* Stats at Bottom */}
-                    <div className="flex gap-3 w-full justify-center">
+                    <div className="flex gap-3 w-full justify-center text-white">
                         <div className="bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-4 text-center border border-white/20">
-                            <div className="text-2xl font-bold mb-0.5">50K+</div>
+                            <div className="text-2xl font-bold mb-0.5 text-white">50K+</div>
                             <div className="text-xs opacity-80">Users</div>
                         </div>
                         <div className="bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-4 text-center border border-white/20">
-                            <div className="text-2xl font-bold mb-0.5">₹2Cr+</div>
+                            <div className="text-2xl font-bold mb-0.5 text-white">₹2Cr+</div>
                             <div className="text-xs opacity-80">Settled</div>
                         </div>
                         <div className="bg-white/10 backdrop-blur-sm rounded-2xl px-6 py-4 text-center border border-white/20">
-                            <div className="text-2xl font-bold mb-0.5">Free</div>
+                            <div className="text-2xl font-bold mb-0.5 text-white">Free</div>
                             <div className="text-xs opacity-80">Forever</div>
                         </div>
                     </div>
@@ -190,7 +173,7 @@ export default function SignupPage() {
             </div>
 
             {/* RIGHT PANEL - The Signup Form */}
-            <div className="flex-1 flex items-center justify-center p-6 lg:p-12 relative">
+            <div className="flex-1 flex items-center justify-center p-6 lg:p-12 relative overflow-y-auto">
 
                 <Link href="/" className="absolute top-8 left-8 lg:hidden block">
                      <img src="/logo.png" alt="DostBill" className="h-10 w-auto object-contain" />
@@ -221,7 +204,7 @@ export default function SignupPage() {
                                 <input
                                     type="tel"
                                     placeholder="98765 43210"
-                                    className="flex-1 block w-full px-4 py-3 rounded-none rounded-r-md border border-gray-200 focus:ring-brand-primary focus:border-brand-primary outline-none transition-colors"
+                                    className="flex-1 block w-full px-4 py-3 rounded-none rounded-r-md border border-gray-200 focus:ring-brand-primary focus:border-brand-primary outline-none transition-colors text-text-main"
                                     required
                                     disabled={otpSent} // Lock after OTP is sent
                                     onChange={(e) => setPhoneNumber(e.target.value)}
@@ -237,7 +220,7 @@ export default function SignupPage() {
                                     <input
                                         type={showPassword ? "text" : "password"}
                                         placeholder="••••••••"
-                                        className="block w-full px-4 py-3 rounded-md border border-gray-200 focus:ring-brand-primary focus:border-brand-primary outline-none transition-colors w-full"
+                                        className="block w-full px-4 py-3 rounded-md border border-gray-200 focus:ring-brand-primary focus:border-brand-primary outline-none transition-colors w-full text-text-main"
                                         required
                                         disabled={otpSent}
                                         onChange={(e) => setPassword(e.target.value)}
@@ -258,7 +241,7 @@ export default function SignupPage() {
                                     <input
                                         type={showConfirmPassword ? "text" : "password"}
                                         placeholder="••••••••"
-                                        className="block w-full px-4 py-3 rounded-md border border-gray-200 focus:ring-brand-primary focus:border-brand-primary outline-none transition-colors w-full"
+                                        className="block w-full px-4 py-3 rounded-md border border-gray-200 focus:ring-brand-primary focus:border-brand-primary outline-none transition-colors w-full text-text-main"
                                         required
                                         disabled={otpSent}
                                         onChange={(e) => setConfirmPassword(e.target.value)}
@@ -284,7 +267,7 @@ export default function SignupPage() {
                                     type="text"
                                     placeholder="123456"
                                     maxLength={6}
-                                    className="block w-full px-4 py-3 text-center tracking-widest text-lg font-bold rounded-md border border-gray-200 focus:ring-brand-primary focus:border-brand-primary outline-none transition-colors"
+                                    className="block w-full px-4 py-3 text-center tracking-widest text-lg font-bold rounded-md border border-gray-200 focus:ring-brand-primary focus:border-brand-primary outline-none transition-colors text-text-main"
                                     required
                                     onChange={(e) => setOtp(e.target.value)}
                                 />
@@ -305,26 +288,6 @@ export default function SignupPage() {
                         </button>
 
                     </form>
-
-                    {/* Social / Alternate Login */}
-                    {/* {!otpSent && (
-                        <>
-                            <div className="mt-8 flex items-center justify-center">
-                                <div className="border-t border-gray-200 flex-1"></div>
-                                <span className="px-3 text-sm text-text-muted">or</span>
-                                <div className="border-t border-gray-200 flex-1"></div>
-                            </div>
-
-                            <button 
-                                onClick={handleGoogleSignup}
-                                disabled={loading}
-                                className="mt-6 w-full flex items-center justify-center gap-3 bg-white border border-gray-200 text-text-main font-semibold py-3 px-4 rounded-xl hover:bg-gray-50 transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
-                            >
-                                <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="w-5 h-5" />
-                                Continue with Google
-                            </button>
-                        </>
-                    )} */}
 
                     {/* Login Link */}
                     <p className="mt-8 text-center text-sm text-text-muted">

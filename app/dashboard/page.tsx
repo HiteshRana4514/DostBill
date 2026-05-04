@@ -67,7 +67,7 @@ export default function DashboardPage() {
                </div>
                <div className="hidden sm:flex -space-x-3">
                   {[1,2,3,4,5].map(i => (
-                    <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-gray-100 flex items-center justify-center text-xs font-bold shadow-sm">
+                    <div key={i} className="w-10 h-10 rounded-full border-2 border-surface-card bg-surface-main flex items-center justify-center text-xs font-bold shadow-sm">
                       {i === 5 ? "+12" : String.fromCharCode(64+i)}
                     </div>
                   ))}
@@ -75,14 +75,14 @@ export default function DashboardPage() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 lg:gap-4 mt-8">
-               <div className="bg-gray-50/50 p-4 rounded-2xl border border-gray-100/50">
+               <div className="bg-surface-main/50 p-4 rounded-2xl border border-border-main/50">
                   <p className="text-[10px] font-bold text-text-muted uppercase tracking-widest mb-1 leading-none">Receivable</p>
                   <div className="flex items-center gap-2">
                     <span className="text-xl font-black text-text-main">₹3,400</span>
                     <span className="text-[10px] font-bold text-financial-success bg-financial-success/10 px-2 py-0.5 rounded-full">+5.2%</span>
                   </div>
                </div>
-               <div className="bg-gray-50/50 p-4 rounded-2xl border border-gray-100/50">
+               <div className="bg-surface-main/50 p-4 rounded-2xl border border-border-main/50">
                   <p className="text-[10px] font-bold text-text-muted uppercase tracking-widest mb-1 leading-none">Payable</p>
                   <div className="flex items-center gap-2">
                     <span className="text-xl font-black text-text-main">₹1,150</span>
@@ -105,12 +105,12 @@ export default function DashboardPage() {
                     <p className="text-xs font-medium text-text-muted">Split with your dosts</p>
                   </div>
                 </div>
-                <ChevronRight className="w-5 h-5 text-gray-300 group-hover:text-brand-primary group-hover:translate-x-1 transition-all" />
+                <ChevronRight className="w-5 h-5 text-text-placeholder group-hover:text-brand-primary group-hover:translate-x-1 transition-all" />
             </button>
 
             <button className="w-full bento-card rounded-3xl p-6 flex items-center justify-between group overflow-hidden relative">
                 <div className="flex items-center gap-4">
-                  <div className="p-3 bg-white border border-gray-100 text-brand-primary rounded-2xl shadow-sm group-hover:-rotate-12 transition-transform">
+                  <div className="p-3 bg-surface-card border border-border-main text-brand-primary rounded-2xl shadow-sm group-hover:-rotate-12 transition-transform">
                     <Users className="w-6 h-6" />
                   </div>
                   <div className="text-left">
@@ -118,10 +118,10 @@ export default function DashboardPage() {
                     <p className="text-xs font-medium text-text-muted">Flat, Trip, or Office</p>
                   </div>
                 </div>
-                <ChevronRight className="w-5 h-5 text-gray-300 group-hover:text-brand-primary group-hover:translate-x-1 transition-all" />
+                <ChevronRight className="w-5 h-5 text-text-placeholder group-hover:text-brand-primary group-hover:translate-x-1 transition-all" />
             </button>
 
-            <div className="bento-card rounded-3xl p-6 flex items-center justify-between bg-text-main border-none group cursor-pointer">
+            <div className="bento-card rounded-3xl p-6 flex items-center justify-between bg-slate-900 dark:bg-slate-800 border-none group cursor-pointer">
                <div className="flex items-center gap-4">
                   <div className="p-3 bg-white/10 text-brand-accent rounded-2xl">
                     <Zap className="w-6 h-6 fill-brand-accent text-brand-accent" />
@@ -152,9 +152,9 @@ export default function DashboardPage() {
                   { title: "Fuel Refill", group: "Manali Trip", date: "Yesterday", amount: 2000, person: "Deep", type: "add" },
                   { title: "Movie Tix", group: "Party", date: "Mar 31", amount: 600, person: "You", type: "pay" },
               ].map((activity, i) => (
-                <div key={i} className="flex items-center gap-4 p-4 hover:bg-gray-50 rounded-2xl transition-colors group cursor-pointer">
+                <div key={i} className="flex items-center gap-4 p-4 hover:bg-surface-main rounded-2xl transition-colors group cursor-pointer">
                   <div className={`w-10 h-10 rounded-xl flex items-center justify-center font-black text-[10px] ${
-                    activity.type === "add" ? "bg-brand-light text-brand-primary" : "bg-emerald-50 text-emerald-600"
+                    activity.type === "add" ? "bg-brand-light/30 text-brand-primary" : "bg-emerald-500/10 text-emerald-500"
                   }`}>
                     {activity.type === "add" ? "IN" : "OUT"}
                   </div>
@@ -181,7 +181,7 @@ export default function DashboardPage() {
                   <Target className="w-5 h-5 text-brand-primary" />
                   <h3 className="text-lg font-black text-text-main">Your Circles</h3>
                 </div>
-                <button className="p-2 bg-gray-50 rounded-lg hover:bg-brand-light transition-colors">
+                <button className="p-2 bg-surface-main rounded-lg hover:bg-brand-light/20 transition-colors">
                   <Plus className="w-4 h-4 text-brand-primary" />
                 </button>
               </div>
@@ -194,7 +194,7 @@ export default function DashboardPage() {
                 ].map((group, i) => (
                   <div key={i} className="flex items-center justify-between group cursor-pointer">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-gray-50 rounded-xl flex items-center justify-center text-xl group-hover:bg-brand-light transition-colors">
+                      <div className="w-10 h-10 bg-surface-main rounded-xl flex items-center justify-center text-xl group-hover:bg-brand-light/30 transition-colors">
                         {group.emoji}
                       </div>
                       <p className="text-sm font-bold text-text-main group-hover:text-brand-primary transition-colors">{group.name}</p>

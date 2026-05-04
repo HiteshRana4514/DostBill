@@ -14,6 +14,7 @@ import {
   CreditCard
 } from "lucide-react";
 import Modal from "@/components/shared/Modal";
+import ForceLight from "@/components/shared/ForceLight";
 
 const AVATARS = ["👤", "🦊", "🦁", "🐼", "🐨", "🦄", "🐯", "🐷", "🤖", "👻", "👾", "🤡"];
 
@@ -52,10 +53,13 @@ export default function OnboardingPage() {
           upi_id: upiId,
           onboarded: true
         }
+      }, {
+        emailRedirectTo: `${window.location.origin}/auth/confirm`
       });
 
       if (error) throw error;
 
+      // If email was provided, it will trigger a confirmation email
       router.push("/dashboard");
     } catch (err: any) {
       alert(err.message || "Failed to save profile");
@@ -67,6 +71,7 @@ export default function OnboardingPage() {
   if (authLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center p-6 bg-surface-main">
+        <ForceLight />
         <div className="w-full max-w-lg bg-white rounded-[2.5rem] p-8 lg:p-12 space-y-8">
           <div className="flex gap-2">
             {[1, 2, 3, 4].map(i => <div key={i} className="h-1.5 w-12 skeleton rounded-full" />)}
@@ -84,6 +89,7 @@ export default function OnboardingPage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center p-6 bg-surface-main mesh-bg">
+      <ForceLight />
       <div className="w-full max-w-lg bg-white rounded-[2.5rem] border border-gray-100 shadow-card p-8 lg:p-12 relative overflow-hidden animate-in fade-in zoom-in-95 duration-500">
 
         {/* Step Indicator */}
@@ -99,7 +105,7 @@ export default function OnboardingPage() {
 
         {/* Step 1: Name */}
         {step === 1 && (
-          <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-500">
+          <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-500 text-text-main">
             <div>
               <h2 className="text-3xl font-black text-text-main tracking-tight">What's your name?</h2>
               <p className="text-text-muted font-medium mt-2">This is how your dosts will see you.</p>
@@ -130,7 +136,7 @@ export default function OnboardingPage() {
 
         {/* Step 2: Email */}
         {step === 2 && (
-          <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-500">
+          <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-500 text-text-main">
             <div>
               <h2 className="text-3xl font-black text-text-main tracking-tight">And your email?</h2>
               <p className="text-text-muted font-medium mt-2">For receipts and important updates.</p>
@@ -169,7 +175,7 @@ export default function OnboardingPage() {
 
         {/* Step 3: UPI ID */}
         {step === 3 && (
-          <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-500">
+          <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-500 text-text-main">
             <div>
               <h2 className="text-3xl font-black text-text-main tracking-tight">Your UPI ID? <span className="text-xl text-text-muted font-bold">(Optional)</span></h2>
               <p className="text-text-muted font-medium mt-2">Add your UPI ID for seamless and faster settlements.</p>
@@ -207,7 +213,7 @@ export default function OnboardingPage() {
 
         {/* Step 4: Avatar */}
         {step === 4 && (
-          <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-500 text-center">
+          <div className="space-y-8 animate-in fade-in slide-in-from-right-4 duration-500 text-center text-text-main">
             <div>
               <h2 className="text-3xl font-black text-text-main tracking-tight">Pick an avatar</h2>
               <p className="text-text-muted font-medium mt-2">Let your personality shine.</p>
@@ -262,7 +268,7 @@ export default function OnboardingPage() {
 
       {/* Email Consent Popup */}
       <Modal isOpen={showConsent} onClose={() => setShowConsent(false)}>
-        <div className="bg-white rounded-[2.5rem] p-8 shadow-2xl text-center space-y-6">
+        <div className="bg-white rounded-[2.5rem] p-8 shadow-2xl text-center space-y-6 text-text-main">
           <div className="w-20 h-20 bg-brand-light rounded-3xl flex items-center justify-center mx-auto text-4xl">
             📬
           </div>
